@@ -1,0 +1,259 @@
+ <div class="body">
+<div class="movie-containers">
+    <label for="">Select Seats</label>
+    <select  id="price">Price
+       <option value="none">Select Price Category</option>
+        <option value="120">120</option>
+        <option value="170">170</option>
+        <option value="230">230</option>
+    </select>
+     <label for="">Select Show Time</label>
+    <select  id="time">
+       <option value="none">Select Time</option>
+        <option value="10:30 am">10:30 am</option>
+        <option value="1:30 pm">1:30 pm</option>
+        <option value="5:00 pm">5:00 pm</option>
+       <option value="8:30 pm">8:30 pm</option>
+        <option value="11:30 pm">11:30 pm</option>
+    </select>
+</div>
+<ul class="showcase">
+    <li>
+        <div class="seat selected"></div>
+        <small>Selected</small>
+    </li>
+     <li>
+        <div class="seat"></div>
+        <small>N/A</small>
+    </li>
+     <li>
+        <div class="seat occupied "></div>
+        <small>Occupied</small>
+    </li>
+</ul>
+<div class="container">
+    <div class="screen"></div>
+    <div class="row1">
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div> 
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+
+    </div>
+      <div class="row1">
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat occupied"></div> 
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+
+    </div>
+      <div class="row1">
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div> 
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+
+    </div>
+      <div class="row1">
+        <div class="seat occupied"></div>
+        <div class="seat"></div>
+        <div class="seat"></div> 
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+
+    </div>
+      <div class="row1">
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div> 
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat occupied"></div>
+        <div class="seat occupied"></div>
+        <div class="seat occupied"></div>
+
+    </div>
+      <div class="row1">
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div> 
+        <div class="seat occupied"></div>
+        <div class="seat occupied"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+
+    </div>
+</div>
+<form id="text">
+    You have selected <span id="count" >0</span> seats for a price of a RS <span id="total">0</span>/-
+    <input type="text" name="userID" id="userid" value="{{user._id}}" hidden>
+     <input type="text" name="filimID" id="filimid" value="{{filimId}}" hidden>
+     <button  class="btn btn-success" id="booking-details" type="submit">  Book Tickets</button>
+</form>
+    
+</div>
+<script>
+ const container=document.querySelector('.container');
+ const seats=document.querySelectorAll('.row1 .seat:not(.occupied)')
+ const count=document.getElementById('count');
+ const total=document.getElementById('total') ;
+ const PriceSelect= document.getElementById('price')
+ const selectTime =document.getElementById('time')
+
+ let ticketPrice= +PriceSelect.value;
+ {{!-- let userTime= +selectTime.value --}}
+ populateUI()
+// save selected Prcice range index and price
+function setMovieData(priceIndex,price){
+    localStorage.setItem('selectedPriceIndex',priceIndex)
+    localStorage.setItem('selectedPrice',price)
+    
+}
+//save time to local storage
+function setTime(){
+  $('#time').change(function() {
+        localStorage.setItem('selectedTime', this.value);
+    });
+}
+
+//update total and count
+function updateSelectedCount(){
+    const selectedSeats=document.querySelectorAll('.row1 .seat.selected')
+   
+   const seatIndex=[...selectedSeats].map(function(seat){
+    return[...seats].indexOf(seat)
+   }) 
+   
+    localStorage.setItem('selectedSeats',JSON.stringify(seatIndex))
+    const selectedSeatsCount= selectedSeats.length
+   
+   count.innerText= selectedSeatsCount
+   total.innerText=selectedSeatsCount*ticketPrice
+   
+   localStorage.setItem('totalPrice',total.innerHTML)
+   localStorage.setItem('totalCount',count.innerHTML)
+
+}
+
+
+//get data from local storage and populateUI
+function populateUI(){
+const selectedSeats= JSON.parse( localStorage.getItem('selectedSeats'))
+  if(selectedSeats !==null && selectedSeats.length > 0){
+    seats.forEach((seat,index)=>{
+        if(selectedSeats.indexOf(index) > -1){
+            seat.classList.add('selected')
+        }
+    })
+  }
+  const selectedPriceindex =localStorage.getItem('selectedPriceIndex')
+  if(selectedPriceindex != null){
+    PriceSelect.selectedIndex =selectedPriceindex
+  }
+}
+
+//select diffrent Price range tickets
+PriceSelect.addEventListener('change',(e)=>{
+    ticketPrice= +e.target.value
+    setMovieData(e.target.selectedIndex, e.target.value)
+    updateSelectedCount()
+})
+
+container.addEventListener('click',(e)=>{
+  if(e.target.classList.contains('seat') && !e.target.classList.contains('occupied')){
+   e.target.classList.toggle('selected')
+  } 
+    updateSelectedCount()
+})
+setTime()
+updateSelectedCount()
+//submitting data to database using ajax
+ $("#text").submit((e)=>{
+  e.preventDefault()
+    var userSelectedPrice= window.localStorage.getItem("selectedPrice")
+    var userTotalPrice= window.localStorage.getItem("totalPrice")
+    var userSelectedSeats= window.localStorage.getItem("selectedSeats")
+    var userTotalCount= window.localStorage.getItem("totalCount")
+    var userTime= window.localStorage.getItem("selectedTime")
+      console.log("selectedPrice",userTotalPrice,userTotalCount,userSelectedSeats, userSelectedPrice)
+  $.ajax({
+        url:'/place-booking',
+        method:'post',
+        data:{userTotalPrice,
+                userTotalCount,
+                userSelectedSeats, 
+                userSelectedPrice,
+                userTime,
+                "userID":$("#userid").val(),
+                "filimID":$("#filimid").val()
+              },
+        
+        success:(response)=>{
+          alert(response)
+          razorPayment(response)
+        }
+      })
+ })
+  function razorPayment(order){
+   var options = {
+      "key": "rzp_test_Zykjk74kt9exMK", // Enter the Key ID generated from the Dashboard
+      "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      "currency": "INR",
+      "name": "Book My Seats",
+      "description": "Test Transaction",
+      "image": "https://example.com/your_logo",
+      "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      "handler": function (response,){
+         
+          verifyPayment(response,order)
+      },
+      "prefill": {
+          "name": "Gaurav Kumar",
+          "email": "gaurav.kumar@example.com",
+          "contact": "9999999999"
+      },
+      "notes": {
+          "address": "Razorpay Corporate Office"
+      },
+      "theme": {
+          "color": "#3399cc"
+      }
+  }; 
+   var rzp1 = new Razorpay(options);
+     rzp1.open();
+  }
+  function verifyPayment(payment,order){
+    $.ajax({
+      url:'/verify-payment',
+      data:{
+        payment,
+        order
+      },
+      method:'post',
+     success:(response)=>{
+      if(response.status){
+           location.href='/booking-success'
+      }else{
+        alert("Payment Failed")
+      }
+       
+     }
+    })
+  }
+</script>

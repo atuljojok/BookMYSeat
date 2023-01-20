@@ -1,0 +1,30 @@
+<section>
+    <div class="container">
+        <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Languages</th>
+      <th scope="col">Discription</th>
+      <th scope="col">Category</th>
+       <th scope="col">Image</th>
+       <th>Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each filims}}
+    <tr>
+      <th scope="row">{{this.Name}}</th>
+      <td>{{this.Language}}</td>
+      <td>{{this.Discription}}</td>
+      <td>{{this.Category}}</td>
+      <td><img style="height:50px;width:50px" src="/product-images/{{this._id}}.jpg" alt=""></td>
+      <td><a href="/adminS/edit-filim/{{this._id}}" class="btn btn-primary">Edit</a>
+      <a href="/adminS/delete-filim/{{this._id}}" class="btn btn-danger" onclick="return confirm('Are you Want to delete{{this.Name}}?')">Delete</a>
+      </td>
+    </tr>
+   {{/each}}
+  </tbody>
+</table>
+    </div>
+</section>

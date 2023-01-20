@@ -1,0 +1,41 @@
+<div class="body">
+<section>
+    <div class="container" >
+        <div class="col md 6 row justify-content-end">
+                <form action="/select-place" method="post" class="w-25 mr-5 mt-3">
+                <div class="d-grid gap-1 d-md-flex justify-content-md-end">
+                    <select class="form-select" name="Place" aria-label="Default select example">
+                        <div class="option">
+                        <option selected>Select Place where to go </option> 
+                        {{#each places}}
+                        <option  value="{{this._id}}">{{this._id}}</option>
+                        {{/each}} 
+                        </div>
+                    </select> 
+                            <button type="submit" class="btn btn-success me-md-2">Ok</button> 
+                        </div>
+                    
+                    <input type="text" name="filimID" value="{{filimId}}" hidden >
+                    
+                    </form>
+       </div>
+    </div>
+    <div class="container">
+         <h3>{{filimDetails.Name}}</h3>
+          <p>{{filimDetails.Category}}:{{filimDetails.Discription}}:{{filimDetails.Language}}:</p>
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <img src="/product-images/{{filimId}}.jpg" class="d-block w-100" alt="Image" style="height:20rem ;">
+            </div>
+              <div class="carousel-item active" style="">
+                <div class="carousel-caption d-none d-md-block" style="padding-top:10rem">
+               
+            </div>   
+        </div>
+         
+        {{!-- </div>
+        <div class="details" style="background-color:white ;color:#242526"> <h1>{{filimDetails}}</h1></div>
+    </div> --}}
+</section>
+</div>
+

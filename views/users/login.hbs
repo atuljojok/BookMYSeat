@@ -1,0 +1,25 @@
+<section class="body">
+    <div class="col md 6">
+        <div class="container" style="width:450px; ">
+            <h2 class="text-center" style="color: #750000;">Login</h2>
+            <form class=" form-control mt-2 form-control-sm" action="/login" method="post" style=" background-color:#c2272d; border:0ch" >
+            {{#if loginErr}}
+            <p class="err">{{loginErr}}</p>
+              {{/if}}
+                <div class="mb-3">
+                    <label for="" class="form-label text-light" >Email address</label>
+                    <input type="email" class="form-control  text-light" aria-describedby="emailHelp" name="Email">
+                    <div id="emailHelp" class="form-text  text-light">We'll never share your email with anyone else.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="" class="form-label  text-light">Password</label>
+                    <input type="password" class="form-control  text-light" name="Password">
+                </div>
+
+                <button type="submit" class="btn btn-success" style=" background-color:#ec2020;border-color:#c2272d">Login</button>
+                <a class="text-right  text-light" href="/signup" style="text-decoration: none;">Create New Account?</a>
+        </form>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,29 @@
+<section  style="background-color: rgba(167, 231, 245, 0.9); ">
+    <div class="container ">
+        <table class="table table-responsive-md table-info">
+  <thead  class="table-info">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Languages</th>
+      <th scope="col">Discription</th>
+      <th scope="col">Category</th>
+       <th scope="col">Image</th>
+       <th>Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each filims}}
+    <tr>
+      <th scope="row">{{this.Name}}</th>
+      <td>{{this.Language}}</td>
+      <td>{{this.Discription}}</td>
+      <td>{{this.Category}}</td>
+      <td><img style="height:80px;width:80px" src="/product-images/{{this._id}}.jpg" alt=""></td>
+      <td><button class="btn btn-success" onclick="screen('{{this._id}}')">Add to Screen</button></td>
+      </td>
+    </tr>
+   {{/each}}
+  </tbody>
+</table>
+    </div>
+</section>

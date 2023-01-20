@@ -1,0 +1,28 @@
+<section >
+    <div class="container mt-5">
+        <div class="col-md-11">
+           
+            <table class="table table-responsive-md">
+                <thead>
+                    <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Place</th>
+                    <th scope="col">Contact Number</th>
+                     <th scope="col">Book</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each getTheater}}
+                    <tr>
+                    <td>{{this.Name}}</td>
+                    <td>{{this.Place}}</td>
+                    <td>{{this.MObNo}}</td>
+                  <td><a href="/show-filim-theater/{{this._id}}" class="btn btn-info">Select Theater</a></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+                </table>
+        </div>
+    </div>
+</section>
+

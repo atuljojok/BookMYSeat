@@ -1,0 +1,60 @@
+<section>
+   <div class="container">
+           <h2 class="text-center">Edit Filim</h2>
+        <div class="row">
+         <div class="col md 6">
+        <form action="/adminS/edit-filim/{{filimDetails._id}}" method="post" enctype="multipart/form-data" class="form-control" >
+
+         <label for="">Name</label><br>
+         <input type="text" name="Name" placeholder="Filim name" class="form-control" value="{{filimDetails.Name}}" ><br>
+
+         <label for="">Discription</label><br>
+         <input type="text" name="Discription" class="form-control" placeholder="Details Of the Filim" value="{{filimDetails.Discription}}"><br>
+
+         <label for="">Category</label>
+         <select class="form-select" name="Category" aria-label="Default select example"  value="{{filimDetails.Category}}">
+            <option value="Filim">Filim</option>
+            
+            </select>
+         
+          <label for="">Language</label>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox"  value="{{filimDetails.Language.Malayalam}}" name="Language" id="Malayalam">
+            <label class="form-check-label" for="Malayalam">
+               Malayalam
+            </label>
+            </div>
+            <div class="form-check">
+            <input class="form-check-input" type="checkbox"  value="Tamil" name="Language" >
+            <label class="form-check-label" for="Tamil">
+               Tamil
+            </label>
+            </div>
+             <div class="form-check">
+            <input class="form-check-input" type="checkbox"  value="{{filimDetails.Language}}" id="English"  name="Language">
+            <label class="form-check-label" for="English">
+               English
+            </label>
+            </div>
+             <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="{{filimDetails.Language.Hindhi}}" id="Hindhi"name="Language" >
+            <label class="form-check-label" for="Hindhi">
+              Hindhi
+            </label>
+            </div>
+         <label for="">Image</label><br>
+         <img src="/product-images/{{filimDetails._id}}.jpg" alt=""  style="height:auto;width:100px" id="viewImage" class="p-3">
+         <input type="file" class="form-control" name="Image"  onchange="imageView(event)"><br>
+
+        <button type="submit" class="btn btn-success">Submit</button>    
+
+        </form>
+     </div>
+    </div>
+    </div>
+</section>
+<script>
+    function imageView(event){
+        document.getElementById('viewImage').src=URL.createObjectURL(event.target.files[0])
+    }
+</script>

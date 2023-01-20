@@ -1,0 +1,26 @@
+<section>
+    <div class="container">
+        <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Place</th>
+      <th scope="col">Screens</th>
+      <th scope="col">Email</th>
+       <th scope="col">Mobile no</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each theaterDatas}}
+    <tr>
+      <th scope="row">{{this.Name}}</th>
+      <td>{{this.Place}}</td>
+      <td>{{this.Screen}}</td>
+      <td>{{this.Email}}</td>
+      <td>{{this.MObNo}}</td>
+    </tr>
+   {{/each}}
+  </tbody>
+</table>
+    </div>
+</section>

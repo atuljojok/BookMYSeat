@@ -1,0 +1,55 @@
+<section>
+   <div class="container">
+           <h2 class="text-center">Add Theater</h2>
+        <div class="row">
+         <div class="col md 6">
+        <form action="/adminS/add-theater" method="post" enctype="multipart/form-data" class="form-control" >
+
+         <label for="">Name</label><br>
+         <input type="text" name="Name" placeholder="Theater name" class="form-control"><br>
+
+         <label for="">Place</label>
+         <select class="form-select" name="Place" aria-label="Default select example">
+            <option value="Alappuzha">Alappuzha</option>
+            <option value="Trivandarum">Trivandarum</option>
+            <option value="Ernakulam">Ernakulam</option>
+            <option value="Kollam">Kollam</option>
+            <option value="Thrisure">Thrisure</option>
+            
+            </select>
+         
+          <label for="">Select Screen In Theater</label>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="screen 1" name="Screen" id="Malayalam">
+            <label class="form-check-label" for="Malayalam">
+              screen 1
+            </label>
+            </div>
+            <div class="form-check">
+            <input class="form-check-input" type="checkbox" value=" screen 2" id="Tamil" name="Screen" >
+            <label class="form-check-label" for="Tamil">
+                screen 2
+            </label>
+            </div>
+             <div class="form-check">
+            <input class="form-check-input" type="checkbox" value=" screen 3" id="English"  name="Screen">
+            <label class="form-check-label" for="English">
+                screen 3
+            </label>
+            </div>
+             <div class="form-check">
+            <input class="form-check-input" type="checkbox" value=" screen 4" id="Hindhi"name="Screen" >
+            <label class="form-check-label" for="Hindhi">
+               screen 4
+            </label>
+            </div>
+         <label for="">Contact Details</label>
+         <input type="mail" name="Email" placeholder="Email" class="form-control"><br>
+         <input type="tel" name="MObNo" placeholder="Mobile Number" class="form-control"><br>
+        <button type="submit" class="btn btn-success">Submit</button>    
+
+        </form>
+     </div>
+    </div>
+    </div>
+</section>

@@ -1,0 +1,28 @@
+<section >
+    <div class="container mt-5">
+        <div class="col-md-11">
+            <table class="table table-responsive-md">
+                <thead>
+                    <tr>
+                   <th scope="col">Image</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Language</th>
+                    <th scope="col">Dicription</th>
+                     <th scope="col">Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each myShows}}
+                    <tr>
+                    <td><img src="/product-images/{{this._id}}.jpg" alt="" style="height:90px ;width:90px"></td>
+                    <td>{{this.Name}}</td>
+                    <td>{{this.Language}}</td>
+                    <td>{{this.Discription}}</td>
+                   <td> <a href="/adminT/remove-show/{{this._id}}" class="btn btn-danger"  onclick="return confirm('Are you Want to delete{{this.Name}}?')">Remove</a></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+                </table>
+        </div>
+    </div>
+</section>

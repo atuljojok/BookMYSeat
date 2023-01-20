@@ -1,0 +1,40 @@
+<header>
+    <nav class="navbar navbar-expand-lg " style="background-color:#FD1C03 ;">
+    <div class="container-fluid">
+        <a class="navbar-brand h5 text-danger bg-dark" href="#" style="font-family: cursive;" >BookMySeats</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+            <a class="nav-link active h3" aria-current="page" href="/" style="color:#fff ;">Home</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="">Link</a>
+            </li>
+        </ul>
+       
+         <div class="dropdown pull-right dropleft"style="margin-right: 3rem;" >
+            <a style="background-color:#FD1C03 ;border:none" class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             {{#if user}}
+               {{user.Name}}
+               {{else}}
+                Account
+               {{/if}} 
+            </a>
+
+            <ul class="dropdown-menu dropdown-menu-left text-left">
+                {{#if user}}
+                 <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                 {{else}}
+                <li><a class="dropdown-item" href="/login">Login</a></li>
+                 {{/if}}
+                <li><a class="dropdown-item" href="#"></a></li>
+            </ul>
+            </div>
+        </div>
+        </div>
+    </div>
+    </nav>
+</header>

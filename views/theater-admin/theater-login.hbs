@@ -1,0 +1,25 @@
+<section >
+    <div class="col md 6">
+        <div class="container">
+            <h2 class="text-center mt-4"> My Theater Login</h2>
+            <form class=" form-control mt-2" action="/adminT/login" method="post" >
+            {{#if loginErr}}
+            <p class="err">{{loginErr}}</p>
+              {{/if}}
+                <div class="mb-3">
+                    <label for="" class="form-label">Email address</label>
+                    <input type="email" class="form-control" aria-describedby="emailHelp" name="Email">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="Password">
+                </div>
+
+                <button type="submit" class="btn btn-success">Login</button>
+                <a class="text-right" href="/adminT/signup">Creat New Account?</a>
+        </form>
+        </div>
+    </div>
+</section>

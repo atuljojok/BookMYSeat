@@ -1,0 +1,40 @@
+<section>
+    <div class="container">
+      
+        <div class="row pt-5">
+            <div class="col md 12 bg-light pt-3">
+                <h2  class="text-center text-danger">BookMySeats</h2>
+                <hr>
+                <h4  class="text-center">Booking Details</h4>
+                <div class="col md 6">
+                    <h5>Your Ticket</h5>
+                    <p >Booking Id:{{userD._id}}</p>
+                     {{!-- <p  class="text-decoration-underline">Transaction Id:231115154</p> --}}
+                    <hr>
+                     <div class="container">
+                            <div class="row">
+                                <div class="col-sm">
+                                 <p  class="font-monospace">Film:{{filim.Filim.Name}}</p>
+                                 <p  class="font-monospace">Theater :{{theater.Name}},{{theater.Place}}</p>
+                                 <p  class="font-monospace">Total Amount </p>
+
+                                </div>
+                                <div class="col-sm">
+                                  <h5>Admit:{{userD.Admits}}</h5>
+                                  <p  class="font-monospace">Seat No:{{userD.SelectedSeats}}</p>
+                                </div>
+                                <div class="col-sm">
+                                <p  class="font-monospace">Date:{{userD.Date}}</p>
+                                 <p  class="font-monospace">Time:{{userD.ShowTime}}</p>
+                                 <h5 class="font-monospace text-secondary">:{{userD.TotalPrice}}/-</h5>
+                                </div>
+                            </div>
+                            </div>
+                </div>
+               
+            </div>
+        </div>
+      
+    </div>
+   
+</section>

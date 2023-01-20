@@ -1,0 +1,32 @@
+<section >
+    <div class="container mt-5">
+          
+        <div class="col-md-11">
+            <table class="table table-responsive-md">
+                <thead>
+                    <tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                     <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each myShows}}
+                    <tr>
+                    <td> <img src="/product-images/{{this._id}}.jpg" alt="" style="height:80px;width:80px"></td>
+                    <td>{{this.Name}}</td>
+                    <td>{{this.Dicription}}</td>
+                    <td>{{this.Language}}</td>
+                  <td><a href="/pan-screen1/{{this._id}}" class="btn btn-success">Book Now</a></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+                </table>
+        </div>
+    </div>
+</section>
+{{!-- {{email}} --}}
+{{!-- <script>
+    sessionStorage.setItem('theaterEmail',email)
+</script> --}}
